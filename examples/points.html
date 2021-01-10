@@ -12,7 +12,7 @@
 <script>
     const data = [{x: 40}, {x: 90}, {x: 20}, {x: 130}, {x: 90}, {x: 91}]
 
-    const respacedData = reposition(data, 1000, 20);
+    const respacedData = respacer.repositionPoints(data, 1000, 20);
 
     console.log({respacedData});
 
@@ -44,14 +44,10 @@
         .append('line')
         .attr('x1', d => d.newX)
         .attr('x2', d => d.x)
-
         .attr('y1', 50)
         .attr('y2', 150)
         .attr('r', 5)
     .attr("stroke", "black");
-
-    console.log(respacedData)
-
 </script>
 
 </body>

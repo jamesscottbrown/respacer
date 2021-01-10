@@ -1,6 +1,6 @@
 //import place from './reposition';
 
-const reposition = require('./reposition');
+const {repositionPoints} = require('./reposition');
 
 
 const checkOrdered = (values) => {
@@ -35,11 +35,13 @@ const checkSpaces = (values, minSpacing) => {
 test('runs', () => {
     const data = [{x: 4}, {x: 5}, {x: 2}, {x: 9}, {x: 5}]
 
-    const respacedData = reposition(data, 1000);
+    const respacedData = repositionPoints(data, 1000);
 
     // check newX is defined for all elements
-    const sumPos = respacedData.map(d => d.newX).reduce((sum,x) => sum + x);
+    const sumPos = respacedData.map(d => d.newX).reduce((sum, x) => sum + x);
     expect(sumPos).toBeTruthy(); // NaN is falsy
+
+    expect(respacedData.length).toBe(data.length);
 
     expect(checkOrdered(respacedData)).toBeTruthy();
     expect(checkSpaces(respacedData)).toBeTruthy();
@@ -49,27 +51,29 @@ test('runs', () => {
 test('check effect of increasing distance threshold', () => {
     const data = [{x: 4}, {x: 5}, {x: 2}, {x: 9}, {x: 5}];
 
-    const respacedData = reposition(data, 1000, 10);
+    const respacedData = repositionPoints(data, 1000, 10);
     expect(checkOrdered(respacedData)).toBeTruthy();
     expect(checkSpaces(respacedData, 10)).toBeTruthy();
     expect(checkSpaces(respacedData, 100)).toBeFalsy();
+    expect(respacedData.length).toBe(data.length);
 
-
-    const respacedData2 = reposition(data, 1000, 100);
+    const respacedData2 = repositionPoints(data, 1000, 100);
     expect(checkOrdered(respacedData2)).toBeTruthy();
     expect(checkSpaces(respacedData2, 100)).toBeTruthy();
+    expect(respacedData2.length).toBe(data.length);
 });
 
 test('runs', () => {
     const data = [{pos: 4}, {pos: 5}, {pos: 2}, {pos: 9}, {pos: 5}]
 
     // fails if oldPositionName argument not provided
-    const respacedData = reposition(data, 1000, 10);
-    const sumPos = respacedData.map(d => d.newX).reduce((sum,x) => sum + x);
+    const respacedData = repositionPoints(data, 1000, 10);
+    const sumPos = respacedData.map(d => d.newX).reduce((sum, x) => sum + x);
     expect(sumPos).toBeNaN()
 
     // succeeds if oldPositionName argument is provided
-    const respacedData2 = reposition(data, 1000, 10, "pos");
+    const respacedData2 = repositionPoints(data, 1000, 10, "pos");
     expect(checkOrdered(respacedData2)).toBeTruthy();
     expect(checkSpaces(respacedData2)).toBeTruthy();
+    expect(respacedData2.length).toBe(data.length);
 });
