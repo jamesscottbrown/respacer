@@ -8,9 +8,10 @@ const numeric = require('numeric');
  * @param {number} width - The maximum position value that can be assigned. Note that if this is too small, the problem may not be satisfiable.
  * @param {number} minSpacing - The minimum distance between adjacent points after repositioning.
  * @param {string} oldPositionName - The name of the property which contains the original position.
+ * @param {string} newPositionName - The name of the property in which the updated position will be stored.
 
  */
-const repositionPoints = (data, width, minSpacing = 10, oldPositionName = "x") => {
+const repositionPoints = (data, width, minSpacing = 10, oldPositionName = "x", newPositionName = "newX") => {
     const sortedData = data.sort((a, b) => (a[oldPositionName] - b[oldPositionName]));
 
     const numPoints = data.length;
@@ -32,7 +33,7 @@ const repositionPoints = (data, width, minSpacing = 10, oldPositionName = "x") =
     bvec[numPoints + 1] = -width; // right position constraint
 
     const sol = qp.solveQP(Dmat, dvec, numeric.transpose(Amat), bvec);
-    return sortedData.map((d, i) => ({...d, newX: sol.solution[i + 1]}));
+    return sortedData.map((d, i) => ({...d, [newPositionName]: sol.solution[i + 1]}));
 }
 
 /**
@@ -42,8 +43,9 @@ const repositionPoints = (data, width, minSpacing = 10, oldPositionName = "x") =
  * @param {number} minSpacing - The minimum distance between adjacent the end of one object (position + width) and the start of the next after repositioning.
  * @param {string} oldPositionName - The name of the property which contains the original position of each object.
  * @param {string} widthName - The name of the property which contains the width of each object.
+ * @param {string} newPositionName - The name of the property in which the updated position will be stored.
  */
-const repositionLineSegments = (data, width, minSpacing= 10, oldPositionName = "x", widthName="width") => {
+const repositionLineSegments = (data, width, minSpacing= 10, oldPositionName = "x", widthName="width", newPositionName = "newX") => {
     const sortedData = data.sort((a, b) => (a[oldPositionName] - b[oldPositionName]));
 
     const numPoints = data.length;
@@ -65,7 +67,7 @@ const repositionLineSegments = (data, width, minSpacing= 10, oldPositionName = "
     bvec[numPoints + 1] = -width; // right position constraint
 
     const sol = qp.solveQP(Dmat, dvec, numeric.transpose(Amat), bvec);
-    return sortedData.map((d, i) => ({...d, newX: sol.solution[i + 1]}));
+    return sortedData.map((d, i) => ({...d, [newPositionName]: sol.solution[i + 1]}));
 }
 
 

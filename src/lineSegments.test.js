@@ -57,3 +57,13 @@ test('minspacing works', () => {
     expect(checkSpaces(respacedData)).toBeTruthy();
     expect(respacedData.length).toBe(data.length);
 });
+
+test('works with non-default newPositionName', () => {
+    const data = [{x: 4, width: 3}, {x: 5, width: 4}, {x: 2, width: 5}, {x: 9, width: 6}, {x: 5, width: 7}]
+
+    const respacedData = repositionLineSegments(data, 1000, 10, "x", "width", "customNewX");
+
+    // check customNewX is defined for all elements
+    const sumPos = respacedData.map(d => d.customNewX).reduce((sum, x) => sum + x);
+    expect(sumPos).toBeTruthy(); // NaN is falsy
+});

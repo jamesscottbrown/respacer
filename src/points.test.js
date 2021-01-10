@@ -63,7 +63,7 @@ test('check effect of increasing distance threshold', () => {
     expect(respacedData2.length).toBe(data.length);
 });
 
-test('runs', () => {
+test('works with non-default oldPositionName', () => {
     const data = [{pos: 4}, {pos: 5}, {pos: 2}, {pos: 9}, {pos: 5}]
 
     // fails if oldPositionName argument not provided
@@ -76,4 +76,19 @@ test('runs', () => {
     expect(checkOrdered(respacedData2)).toBeTruthy();
     expect(checkSpaces(respacedData2)).toBeTruthy();
     expect(respacedData2.length).toBe(data.length);
+});
+
+test('works with non-default newPositionName', () => {
+    const data = [{x: 4}, {x: 5}, {x: 2}, {x: 9}, {x: 5}]
+
+    const respacedData = repositionPoints(data, 1000, 10, "x", "customNewX");
+
+    // check customNewX is defined for all elements
+    const sumPos = respacedData.map(d => d.customNewX).reduce((sum, x) => sum + x);
+    expect(sumPos).toBeTruthy(); // NaN is falsy
+
+    expect(respacedData.length).toBe(data.length);
+
+    expect(checkOrdered(respacedData)).toBeTruthy();
+    expect(checkSpaces(respacedData)).toBeTruthy();
 });
