@@ -1,6 +1,6 @@
-# Reposition
+# Respacer
 
-Reposition is a library for adjusting the position of points or line-segments to avoid overlaps.
+Respacer is a library for adjusting the position of points or line-segments to avoid overlaps.
 
 It accepts an array of objects, each of which has a property storing its 1D position, and returns a new array containing
 the objects with an added property storing the adjusted position.
