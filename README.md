@@ -15,6 +15,8 @@ and in API (it accepts an array of arbitrary objects, rather than an array of `l
 
 ### For points
 
+[![](./img/points.png)](./examples/points.html)
+
 The `repositionPoints()` function is used to reposition objects which **do not** have individual widths.
 
 `repositionPoints(data, width, minSpacing, oldPositionName)`
@@ -78,6 +80,10 @@ returns:
 ```
 
 ### For line segments
+
+[![](./img/rectangles.png)](./examples/rectangles.html)
+
+
 
 The `repositionLineSegments()` function is used to reposition objects which **do** have individual widths.
 
