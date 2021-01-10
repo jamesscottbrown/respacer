@@ -32,7 +32,7 @@ const checkSpaces = (values, minSpacing) => {
 test('runs', () => {
     const data = [{x: 4, width: 3}, {x: 5, width: 4}, {x: 2, width: 5}, {x: 9, width: 6}, {x: 5, width: 7}]
 
-    const respacedData = repositionLineSegments(data, 1000);
+    const respacedData = repositionLineSegments(data, {width: 1000});
 
     // check newX is defined for all elements
     const sumPos = respacedData.map(d => d.newX).reduce((sum,x) => sum + x);
@@ -47,7 +47,7 @@ test('minspacing works', () => {
     const data = [{x: 4, width: 3}, {x: 5, width: 4}, {x: 2, width: 5}, {x: 9, width: 6}, {x: 5, width: 7}]
     const minSpacing = 10;
 
-    const respacedData = repositionLineSegments(data, 1000, minSpacing);
+    const respacedData = repositionLineSegments(data, {width: 1000, minSpacing});
 
     // check newX is defined for all elements
     const sumPos = respacedData.map(d => d.newX).reduce((sum,x) => sum + x);
@@ -61,7 +61,8 @@ test('minspacing works', () => {
 test('works with non-default newPositionName', () => {
     const data = [{x: 4, width: 3}, {x: 5, width: 4}, {x: 2, width: 5}, {x: 9, width: 6}, {x: 5, width: 7}]
 
-    const respacedData = repositionLineSegments(data, 1000, 10, "x", "width", "customNewX");
+    const opts = {width: 1000, minSpacing: 10, oldPositionName: "x", widthName: "width", newPositionName: "customNewX"}
+    const respacedData = repositionLineSegments(data, opts);
 
     // check customNewX is defined for all elements
     const sumPos = respacedData.map(d => d.customNewX).reduce((sum, x) => sum + x);

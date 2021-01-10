@@ -17,14 +17,13 @@ and in API (it accepts an array of arbitrary objects, rather than an array of `l
 
 [![](./img/points.png)](./examples/points.html)
 
-The `repositionPoints()` function is used to reposition objects which **do not** have individual widths.
+The `repositionPoints(data, options)` function is used to reposition objects which **do not** have individual widths.
 
-`repositionPoints(data, width, minSpacing, oldPositionName, newPositionName)`
+The optional argument `options` is an object in which the following properties can be set:
 
 | Name              | Type   | Default | Description                                                                                                          |
 | ----------------- | ------ | ------- | -------------------------------------------------------------------------------------------------------------------- |
-| `data`            | array  |         | The array of data to be repositioned.                                                                                |
-| `width`           | number |         | The maximum position value that can be assigned. Note that if this is too small, the problem may not be satisfiable. |
+| `width`           | number | 1000    | The maximum position value that can be assigned. Note that if this is too small, the problem may not be satisfiable. |
 | `minSpacing`      | number | 10      | The minimum distance between adjacent points after repositioning.                                                    |
 | `oldPositionName` | string | x       | The name of the property which contains the original position.                                                       |
 | `newPositionName` | string | newX    | The name of the property in which the updated position will be stored.                                               |                                    
@@ -85,16 +84,13 @@ returns:
 
 [![](./img/rectangles.png)](./examples/rectangles.html)
 
+The `repositionLineSegments(data, options)` function is used to reposition objects which **do** have individual widths.
 
-
-The `repositionLineSegments()` function is used to reposition objects which **do** have individual widths.
-
-`repositionLineSegments(data, width, minSpacing, oldPositionName, widthName, newPositionName)`
+The optional argument `options` is an object in which the following properties can be set:
 
 | Name              | Type   | Default | Description                                                                                                                   |
 | ----------------- | ------ | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `data`            | array  |         | The array of data to be repositioned.                                                                                         |
-| `width`           | number |         | The maximum position value that can be assigned. Note that if this is too small, the problem may not be satisfiable.          |
+| `width`           | number | 1000    | The maximum position value that can be assigned. Note that if this is too small, the problem may not be satisfiable.          |
 | `minSpacing`      | number | 10      | The minimum distance between adjacent the end of one object (position + width) and the start of the next after repositioning. |
 | `oldPositionName` | string | x       | The name of the property which contains the original position of each object.                                                 |
 | `widthName`       | string | width   | The name of the property which contains the width of each object.                                                             |
