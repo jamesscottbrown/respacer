@@ -1,6 +1,15 @@
 var qp = require('quadprog');
 const numeric = require('numeric');
 
+
+/**
+ * Reposition objects which **do not** have individual widths
+ * @param {array} data - The array of data to be repositioned.
+ * @param {number} width - The maximum position value that can be assigned. Note that if this is too small, the problem may not be satisfiable.
+ * @param {number} minSpacing - The minimum distance between adjacent points after repositioning.
+ * @param {string} oldPositionName - The name of the property which contains the original position.
+
+ */
 const repositionPoints = (data, width, minSpacing = 10, oldPositionName = "x") => {
     const sortedData = data.sort((a, b) => (a[oldPositionName] - b[oldPositionName]));
 
@@ -26,6 +35,14 @@ const repositionPoints = (data, width, minSpacing = 10, oldPositionName = "x") =
     return sortedData.map((d, i) => ({...d, newX: sol.solution[i + 1]}));
 }
 
+/**
+ * Reposition objects which **do** have individual widths
+ * @param {array} data - The array of data to be repositioned.
+ * @param {number} width - The maximum position value that can be assigned. Note that if this is too small, the problem may not be satisfiable.
+ * @param {number} minSpacing - The minimum distance between adjacent the end of one object (position + width) and the start of the next after repositioning.
+ * @param {string} oldPositionName - The name of the property which contains the original position of each object.
+ * @param {string} widthName - The name of the property which contains the width of each object.
+ */
 const repositionLineSegments = (data, width, minSpacing= 10, oldPositionName = "x", widthName="width") => {
     const sortedData = data.sort((a, b) => (a[oldPositionName] - b[oldPositionName]));
 
