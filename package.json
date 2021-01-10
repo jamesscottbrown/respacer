@@ -6,7 +6,7 @@
   "browser": "src/reposition.js",
   "scripts": {
     "test": "jest",
-    "build": "browserify src/reposition.js -o build/bundle.js -s respacer -p tinyify",
+    "build": "browserify src/reposition.js -o dist/bundle.js -s respacer -p tinyify",
     "lint": "eslint src"
   },
   "keywords": [],

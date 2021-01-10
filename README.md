@@ -126,7 +126,7 @@ You can make `respacer` available in the global scope using a `<script>` tag:
 
 ```html
 
-<script src="../build/bundle.js"></script>
+<script src="../dist/bundle.js"></script>
 ```
 
 You can then use the `respacer.repositionPoints()` and `respacer.repositionLineSegments()` methods from within
@@ -138,8 +138,8 @@ You can generate this bundle file from the source code in this repository by run
 
 Alternatively, you can use a copy of the file served by various CDNs, including:
 
-* [`https://cdn.jsdelivr.net/npm/respacer/build/bundle.js`](https://cdn.jsdelivr.net/npm/respacer/build/bundle.js)
-* [`https://unpkg.com/respacer@1.0.5/build/bundle.js`](https://unpkg.com/respacer@1.0.5/build/bundle.js)
+* [`https://cdn.jsdelivr.net/npm/respacer/dist/bundle.js`](https://cdn.jsdelivr.net/npm/respacer/build/bundle.js)
+* [`https://unpkg.com/respacer@1.0.5/dist/bundle.js`](https://unpkg.com/respacer@1.0.5/build/bundle.js)
 
 
 ### As a commonjs module
