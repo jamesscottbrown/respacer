@@ -6,7 +6,7 @@
   "browser": "src/reposition.js",
   "scripts": {
     "test": "jest",
-    "build": "browserify src/reposition.js -o build/bundle.js -s reposition",
+    "build": "browserify src/reposition.js -o build/bundle.js -s reposition -p tinyify",
     "lint": "eslint src"
   },
   "keywords": [],
@@ -15,7 +15,8 @@
   "devDependencies": {
     "browserify": "^17.0.0",
     "eslint": "^7.17.0",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "tinyify": "^3.0.0"
   },
   "dependencies": {
     "numeric": "^1.2.6",
