@@ -1,0 +1,25 @@
+{
+  "name": "reposition",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/reposition.js",
+  "browser": "src/reposition.js",
+  "scripts": {
+    "test": "jest",
+    "build": "browserify src/reposition.js -o build/bundle.js -s reposition",
+    "lint": "eslint src"
+  },
+  "keywords": [],
+  "author": "James Scott-Brown",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "eslint": "^7.17.0",
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "numeric": "^1.2.6",
+    "quadprog": "^1.6.1",
+    "uniq": "^1.0.1"
+  }
+}
