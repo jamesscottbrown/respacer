@@ -1,0 +1,4 @@
+# As this file exists, npm will ignore .gitignore
+# This means build/ will be published to npm, but not stored in git
+node_modules
+.idea
