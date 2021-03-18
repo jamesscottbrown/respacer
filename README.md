@@ -169,13 +169,34 @@ Alternatively, you can use a copy of the file served by various CDNs, including:
 * [`https://unpkg.com/respacer/dist/bundle.js`](https://unpkg.com/respacer/dist/bundle.js)
 
 
+### As an ES6 module
+
+You can import `respacer` as an ES6 module:
+
+```javascript
+
+import {repositionPoints, repositionLineSegments} from 'respacer';
+
+const data = [
+    {x: 4, label: "A"},
+    {x: 9, label: "B"},
+    {x: 2, label: "C"},
+    {x: 13, label: "D"},
+    {x: 9, label: "E"},
+    {x: 9.1, label: "F"}
+];
+
+const repositionedData = repositionPoints(data);
+```
+
+
 ### As a commonjs module
 
 You can use `respacer` as a [CommonJS module](https://en.wikipedia.org/wiki/CommonJS):
 
 ```javascript
 
-const {repositionPoints, repositionLineSegments} = require('./reposition');
+const {repositionPoints, repositionLineSegments} = require('./respacer');
 
 const data = [
     {x: 4, label: "A"},
