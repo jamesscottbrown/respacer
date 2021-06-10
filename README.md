@@ -1,3 +1,7 @@
+![npm](https://img.shields.io/npm/v/respacer)
+![npm bundle size](https://img.shields.io/bundlephobia/min/respacer) 
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/respacer)
+
 # Respacer
 
 Respacer is a library for adjusting the position of points or line-segments to avoid overlaps.
