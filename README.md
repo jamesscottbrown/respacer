@@ -1,6 +1,6 @@
-![npm](https://img.shields.io/npm/v/respacer)
-![npm bundle size](https://img.shields.io/bundlephobia/min/respacer) 
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/respacer)
+[![npm](https://img.shields.io/npm/v/respacer)](https://www.npmjs.com/package/respacer)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/respacer)](https://www.npmjs.com/package/respacer)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/respacer)](https://www.npmjs.com/package/respacer)
 
 # Respacer
 
